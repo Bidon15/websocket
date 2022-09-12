@@ -76,7 +76,7 @@ func (c *Conn) SetReadLimit(n int64) {
 	c.msgReader.limitReader.limit.Store(n + 1)
 }
 
-const defaultReadLimit = 6 << 26
+const defaultReadLimit = 2147483645
 
 func newMsgReader(c *Conn) *msgReader {
 	mr := &msgReader{
