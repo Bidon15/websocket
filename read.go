@@ -91,7 +91,7 @@ func newMsgReader(c *Conn) *msgReader {
 
 func (mr *msgReader) resetFlate() {
 	if mr.flateContextTakeover() {
-		mr.dict.init(32768)
+		mr.dict.init(defaultReadLimit)
 	}
 	if mr.flateBufio == nil {
 		mr.flateBufio = getBufioReader(mr.readFunc)
