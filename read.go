@@ -1,3 +1,4 @@
+//go:build !js
 // +build !js
 
 package websocket
@@ -75,7 +76,7 @@ func (c *Conn) SetReadLimit(n int64) {
 	c.msgReader.limitReader.limit.Store(n + 1)
 }
 
-const defaultReadLimit = 32768
+const defaultReadLimit = 6 << 26
 
 func newMsgReader(c *Conn) *msgReader {
 	mr := &msgReader{
